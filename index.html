@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+ </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joe's Hotdogs</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="rules.css">
+  
+ <body>
+
+  
+
+  <header> Joe's<br>Hotdogs</header>
+  
+  <!-- <img class ="main_icon" src="main_image.png" alt="Hotdog"> -->
+
+  <section id="main-content">
+
+   <div class="main_icon"></div>
+
+   
+   <h1 style="text-align:center">Time to choose!</h1>
+   <div>
+     <div class="request">
+      <label for="hotdogs">
+         <b>Hotdogs by $4.25</b>
+      </label>
+      <select name="options" id="hotdog_prompt" onchange="store_h();">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      <br>
+     </div>
+  
+     <div class="request">
+      <label for="fries">
+         <b>Fries by $2.60</b>
+      </label>
+      <select name="options" id="fries_prompt" onchange="store_f();">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      <br>
+     </div>
+  
+     <div class="request">
+      <label for="soda">
+         <b>Soda by $1.50</b>
+      </label>
+      <select name="options" id="soda_prompt" onchange="store_s();">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      <br>
+     </div>
+  
+     <button onclick="parse_items()">Make order</button>
+   </div>
+
+   <div id="calculations" style="display:none">
+  <div class="caller">
+    <h1>Keep calm, your order is confirmed!</h1>
+   </div>
+   <h2>Here's your receipt!</h2>
+
+   <table class="items">
+    <tr>
+     <th class="ico"> <img src="hot-dog.png" alt="Hotdog"> </th>
+     <th class="type">Hotdog</th>
+     <th class="qty">qty <a id="hotdogs_qty"></a></th>
+     <th class="price">$<a id="hotdogs_price"></a></th>
+    </tr>
+    <tr>
+     <th class="ico"> <img src="french-fries.png" alt="Fries"> </th>
+     <th class="type">French Fries</th>
+     <th class="qty">qty <a id="fries_qty"></a></th>
+     <th class="price">$<a id="fries_price"></a></th>
+    </tr>
+    <tr>
+     <th class="ico"> <img src="can.png" alt="Soda"> </th>
+     <th class="type">Soda</th>
+     <th class="qty">qty <a id="sodas_qty"></a></th>
+     <th class="price">$<a id="sodas_price"></a></th>
+    </tr>
+   </table>
+   <br>
+   <table class="conclusion">
+    <tr>
+     <th class="type">SUBTOTAL</th>
+     <th class="price">$<a id="subtotal" style="width:70%"></a></th>
+    </tr>
+    <tr>
+     <th class="type">DISCOUNT</th>
+     <th class="price">$<a id="discount"></a></th>
+    </tr>
+    <tr>  
+     <th class="type">TAXES</th>
+     <th class="price">$<a id="taxes"></a></th>
+    </tr>
+    <tr>
+     <th class="type" style="color:  #9E2A2B">TOTAL</th>
+     <th class="price" style="color:  #9E2A2B">$<a id="total"></a></th>
+    </tr>
+   </table>
+
+   </div>
+   
+  </section>
+  
+  <script>
+
+   
+   // Store prompt into variables
+   var hotdogs = 0;
+   var fries = 0;
+   var sodas = 0;
+
+   
+   function store_h() {
+    hotdogs = document.getElementById("hotdog_prompt").value;
+
+   }
+
+   function store_f() {
+    fries = document.getElementById("fries_prompt").value;
+
+   }
+
+   function store_s() {
+    sodas = document.getElementById("soda_prompt").value;
+
+   }
+
+
+   function parse_items() {
+    if (hotdogs != 0 || fries != 0 || sodas != 0) {
+       generate_receipt();
+    } else {
+     alert("you forgot of choosing one item!");
+    }
+   }
+
+   function generate_receipt () {
+     // Store the calculations in another variables
+
+    const tables = document.getElementById('calculations');
+    tables.style.display = "block";
+    var subtotal = (hotdogs * 4.25) + (fries * 2.6) + (sodas * 1.5);
+    var discount = 0;
+    var subtotalbefore = subtotal;
+
+    if (subtotal >= 20) {
+     discount = (subtotal * .1);
+     subtotal *= .9;
+    }
+
+    var taxes = (subtotal * 0.0625);
+    var total = taxes + subtotal;
+
+        // when the document is finished loading, replace everything
+        // between the <a ...> </a> tags with the generated values
+    document.getElementById("hotdogs_qty").innerHTML= hotdogs;
+    document.getElementById("fries_qty").innerHTML= fries;
+    document.getElementById("sodas_qty").innerHTML= sodas;
+    document.getElementById("hotdogs_price").innerHTML= (Math.round((hotdogs * 4.25) * 100) / 100);
+    document.getElementById("fries_price").innerHTML= (Math.round((fries * 2.6) * 100) / 100);
+    document.getElementById("sodas_price").innerHTML= (Math.round((sodas * 1.5) * 100) / 100);
+    document.getElementById("subtotal").innerHTML= (Math.round(subtotalbefore * 100) / 100);
+    document.getElementById("discount").innerHTML= (Math.round(discount * 100) / 100);
+    document.getElementById("taxes").innerHTML= (Math.round(taxes * 100) / 100);
+    document.getElementById("total").innerHTML= (Math.round(total * 100) / 100);
+    
+   }
+   
+  </script>
+  <footer>
+   <br>
+   <h1>Thank you for buying with us!</h1>
+   <br>
+  </footer>
+  
+ </body>
+
+</html>

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+*{
+ Margin: 0px;
+ Padding: 5px;
+ Box-sizing: border-box;
+ Outline: none;
+ font-family: 'Varela Round', sans-serif;
+ font-size: 2vw;
+}
+
+header {
+ font-family: 'Acme', sans-serif;
+ color: #9E2A2B;
+ font-size: 6vw;
+ line-height: 80%;
+ text-align: center;
+ margin-bottom: 35px;
+ margin-top: 5px;
+ text-shadow:  1px 0 white;
+ padding-top: 5px;
+ 
+}
+
+
+body {
+ background-color: #ffe4c4;
+}
+
+
+#main-content {
+ background-color: white;
+ width: 60%;
+ /* height: 550px; */
+ margin: auto;
+ padding: 7px;
+}
+
+.caller {
+ display: block;
+ position: relative;
+ top: -15px;
+}
+
+#main-content .caller h1 {
+ font-family: 'Acme', sans-serif;
+ font-size: 3.5vw;
+ text-align: center;
+}
+
+#main-content h2 {
+ font-size: 2vw;
+}
+
+.main_icon {
+ display: block;
+ position: relative;
+ top: -35px;
+ margin: auto;
+ background:url('main_image1.png');
+ background-size: cover;
+ width: 37vw; 
+ height: 15vw;
+}
+
+.items {
+ border-collapse: collapse;
+ border-style: hidden;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 3px;
+ width: 100%;
+}
+
+.items tr {
+ border-style: dashed;
+ height: 4vw;
+}
+
+.ico img {
+ background: transparent;
+ background-size: cover;
+ max-width: 12vw;
+ max-height: 12vw;
+ width: 100%;
+ height: 100%;
+}
+
+#ico1 {
+ background:url('hot-dog.png');
+
+}
+
+.items .type {
+ text-align: left;
+}
+
+.items .qty {
+ text-align: right;
+}
+
+.items .price {
+ text-align: right;
+}
+
+.conclusion {
+ border-collapse: collapse;
+ border-style: hidden;
+ border-top: 1px dashed;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 12px;
+ width: 100%;
+ font-size: 30px;
+ 
+}
+
+.coclusion tr {
+ border-style: hidden;
+ height: 8vw;
+}
+
+.conclusion .type {
+ text-align: right;
+ width: 78%;
+ font-size: larger;
+}
+
+.conclusion .price {
+ text-align: right;
+}
+
+footer {
+ background-color: #9E2A2B;
+ text-align: center;
+ margin: auto;
+ width: 60%;
+ border-bottom: hidden;
+}
+
+footer h1 {
+ font-family: 'Acme', sans-serif !important;
+ color: white;
+}
